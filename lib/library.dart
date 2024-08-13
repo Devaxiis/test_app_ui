@@ -9,3 +9,5 @@ export 'package:test_app_exam/src/presentation/widgets/javob_wg.dart';
 export 'package:test_app_exam/src/presentation/widgets/question_card_wg.dart';
 export 'package:test_app_exam/src/utils/app_colors.dart';
 export 'package:test_app_exam/src/utils/app_images.dart';
+export 'package:test_app_exam/src/presentation/bloc/bloc/choose_bloc.dart';
+export 'package:test_app_exam/src/presentation/ui/chart_screen.dart';

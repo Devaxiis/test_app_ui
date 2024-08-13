@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app_exam/src/utils/app_colors.dart';
 import 'package:test_app_exam/src/utils/app_images.dart';
@@ -20,6 +21,7 @@ class AlertDialogWg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ValueNotifier<double> _valueNotifier = ValueNotifier(0);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 24),
       child: ClipRRect(
@@ -36,10 +38,39 @@ class AlertDialogWg extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: Image(image: AppImages.imageStatistic)),
+                // const SizedBox(
+                //     height: 150,
+                //     width: 150,
+                //     child: Image(image: AppImages.imageStatistic)),
+                SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: DashedCircularProgressBar.aspectRatio(
+                    aspectRatio: 1, // width ÷ height
+                    valueNotifier: _valueNotifier,
+                    progress: 93,
+                    maxProgress: 100,
+                    corners: StrokeCap.butt,
+                    foregroundColor: Colors.blue,
+                    backgroundColor: const Color(0xffeeeeee),
+                    foregroundStrokeWidth: 30,
+                    backgroundStrokeWidth: 30,
+                    animation: true,
+                    child: Center(
+                      child: ValueListenableBuilder(
+                        valueListenable: _valueNotifier,
+                        builder: (_, double value, __) => Text(
+                          '${value.toInt()}%',
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 40
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 const Text(
                   "Yakunlandi",
                   style: AppStyle.appYakunlandi,
