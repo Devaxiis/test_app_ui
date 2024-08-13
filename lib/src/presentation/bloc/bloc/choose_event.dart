@@ -7,7 +7,8 @@ sealed class ChooseEvent extends Equatable {
   List<Object> get props => [];
 }
 
-
 class ChooseCustomEvent extends ChooseEvent {
-  
+  int chooseID;
+  int index;
+  ChooseCustomEvent({required this.chooseID,required this.index});
 }

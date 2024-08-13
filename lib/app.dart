@@ -1,3 +1,5 @@
+import 'package:test_app_exam/src/presentation/bloc/bloc/choose_bloc.dart';
+
 import 'library.dart';
 
 class MyApp extends StatelessWidget {
@@ -6,8 +8,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool islight = true;
-    return BlocProvider(
-      create: (context) => AppThemeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AppThemeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ChooseBloc(),
+        ),
+      ],
       child: BlocListener<AppThemeBloc, AppThemeState>(
         listener: (context, state) {
           if (state is AppThemeSuccess) {

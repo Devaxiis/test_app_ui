@@ -1,7 +1,9 @@
 import 'package:test_app_exam/library.dart';
 import 'package:test_app_exam/src/data/fake_data.dart';
 import 'package:test_app_exam/src/domain/models/test_model.dart';
+import 'package:test_app_exam/src/presentation/bloc/bloc/choose_bloc.dart';
 import 'package:test_app_exam/src/presentation/widgets/card_test_wg.dart';
+import 'package:test_app_exam/src/utils/app_functions.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -83,32 +85,46 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.only(left: 12),
                 child: SizedBox(
                   height: 35,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (_, index) {
-                      // indexlist = index;
-                      return GestureDetector(
-                        onTap: () {
-                          indexlist = index;
-                          if (indexlist == index) {
-                            controller.jumpToPage(indexlist);
+                  child: BlocBuilder<ChooseBloc, ChooseState>(
+                    builder: (context, state) {
+                      int a = 0;
+                          if (state is ChooseInitial) {
+                            a = 0;
                           }
-                          setState(() {});
+                          if (state is ChooseSuccess) {
+                            a = 1;
+                          }
+                          if (state is ChooseFailure) {
+                            a = 2;
+                          }
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) {
+                          
+                          return GestureDetector(
+                            onTap: () {
+                              indexlist = index;
+                              if (indexlist == index) {
+                                controller.jumpToPage(indexlist);
+                              }
+                              setState(() {});
+                            },
+                            child: Container(
+                              height: 35,
+                              width: 35,
+                              margin: const EdgeInsets.only(left: 8),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: AppFunctions.colorer(a),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(8))),
+                              child: Text("$index"),
+                            ),
+                          );
                         },
-                        child: Container(
-                          height: 35,
-                          width: 35,
-                          margin: const EdgeInsets.only(left: 8),
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                              color: AppColors.ffffffCL,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8))),
-                          child: Text("$index"),
-                        ),
+                        itemCount: testData.countTest,
                       );
                     },
-                    itemCount: testData.countTest,
                   ),
                 ),
               ),
@@ -158,9 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           if (indexlist > 0) {
                             controller.jumpToPage(indexlist--);
                           }
-                          setState(() {
-                            
-                          });
+                          setState(() {});
                         },
                         icon: const Icon(
                           Icons.arrow_back_sharp,
@@ -178,12 +192,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           if (indexlist <= testData.countTest) {
                             controller.jumpToPage(indexlist++);
                           } else {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(content: Text("Tugadi")));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text("Tugadi")));
                           }
-                          setState(() {
-                            
-                          });
+                          setState(() {});
                         },
                         icon: const Icon(
                           Icons.arrow_forward,
