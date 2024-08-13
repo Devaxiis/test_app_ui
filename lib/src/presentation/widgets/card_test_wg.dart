@@ -11,6 +11,7 @@ class CardTestWg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int indexID = -1;
     return SizedBox(
       child: Center(
         child: Column(
@@ -32,7 +33,7 @@ class CardTestWg extends StatelessWidget {
                 }
                 if (state is ChooseSuccess) {
                   if (state.correctID == 1) {
-                  id = 1;
+                    id = 1;
                   }
                 }
                 if (state is ChooseFailure) {
@@ -44,10 +45,11 @@ class CardTestWg extends StatelessWidget {
                   }
                 }
                 return JavobWg(
-                  colorID: id,
+                  colorID: indexID == index ? id : 0,
                   jabovIndex: 1,
                   javob: data.javobA,
                   onTab: () {
+                     indexID = index;
                     context
                         .read<ChooseBloc>()
                         .add(ChooseCustomEvent(chooseID: 1, index: index));
@@ -61,9 +63,9 @@ class CardTestWg extends StatelessWidget {
                 if (state is ChooseInitial) {
                   id = 0;
                 }
-                if (state is ChooseSuccess ) {
-                 if (state.correctID == 2) {
-                  id = 1;
+                if (state is ChooseSuccess) {
+                  if (state.correctID == 2) {
+                    id = 1;
                   }
                 }
                 if (state is ChooseFailure) {
@@ -75,10 +77,11 @@ class CardTestWg extends StatelessWidget {
                   }
                 }
                 return JavobWg(
-                  colorID: id,
+                  colorID: indexID == index ? id : 0,
                   jabovIndex: 2,
                   javob: data.javobB,
                   onTab: () {
+                     indexID = index;
                     context
                         .read<ChooseBloc>()
                         .add(ChooseCustomEvent(chooseID: 2, index: index));
@@ -92,9 +95,9 @@ class CardTestWg extends StatelessWidget {
                 if (state is ChooseInitial) {
                   id = 0;
                 }
-                if (state is ChooseSuccess ) {
+                if (state is ChooseSuccess) {
                   if (state.correctID == 3) {
-                  id = 1;
+                    id = 1;
                   }
                 }
                 if (state is ChooseFailure) {
@@ -106,10 +109,11 @@ class CardTestWg extends StatelessWidget {
                   }
                 }
                 return JavobWg(
-                  colorID: id,
+                  colorID: indexID == index ? id : 0,
                   jabovIndex: 3,
                   javob: data.javobC,
                   onTab: () {
+                     indexID = index;
                     context
                         .read<ChooseBloc>()
                         .add(ChooseCustomEvent(chooseID: 3, index: index));
@@ -137,10 +141,11 @@ class CardTestWg extends StatelessWidget {
                   }
                 }
                 return JavobWg(
-                  colorID: id,
+                  colorID: indexID != index ? id : 0,
                   jabovIndex: 4,
                   javob: data.javobD,
                   onTab: () {
+                     indexID = index;
                     context
                         .read<ChooseBloc>()
                         .add(ChooseCustomEvent(chooseID: 4, index: index));
@@ -151,6 +156,7 @@ class CardTestWg extends StatelessWidget {
           ],
         ),
       ),
+   
     );
   }
 }

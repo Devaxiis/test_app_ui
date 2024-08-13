@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:test_app_exam/library.dart';
 import 'package:test_app_exam/src/data/fake_data.dart';
 import 'package:test_app_exam/src/domain/models/test_model.dart';
@@ -87,20 +89,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 35,
                   child: BlocBuilder<ChooseBloc, ChooseState>(
                     builder: (context, state) {
+                      // double? pageID = 1.0;
                       int a = 0;
-                          if (state is ChooseInitial) {
-                            a = 0;
-                          }
-                          if (state is ChooseSuccess) {
-                            a = 1;
-                          }
-                          if (state is ChooseFailure) {
-                            a = 2;
-                          }
+                      // if (controller.page != pageID) {
+                      if (state is ChooseInitial) {
+                        a = 0;
+                      }
+                      if (state is ChooseSuccess) {
+                        a = 1;
+                      }
+                      if (state is ChooseFailure) {
+                        a = 2;
+                      }
+                      // pageID = controller.page;
+                      // }
                       return ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (_, index) {
-                          
                           return GestureDetector(
                             onTap: () {
                               indexlist = index;
@@ -172,7 +177,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                         onPressed: () {
                           if (indexlist > 0) {
-                            controller.jumpToPage(indexlist--);
+                            int page = --indexlist;
+                            controller.animateToPage(page,
+                                duration: const Duration(milliseconds: 700),
+                                curve: Curves.linear);
                           }
                           setState(() {});
                         },
@@ -190,7 +198,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                         onPressed: () {
                           if (indexlist <= testData.countTest) {
-                            controller.jumpToPage(indexlist++);
+                            int page = ++indexlist;
+                            controller.animateToPage(page,
+                                duration: const Duration(milliseconds: 700),
+                                curve: Curves.linear);
+                            log("${controller.position}");
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text("Tugadi")));
