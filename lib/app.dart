@@ -1,3 +1,5 @@
+import 'package:test_app_exam/src/presentation/ui/home_screen.dart';
+import 'package:test_app_exam/src/presentation/ui/test_ui.dart';
 
 import 'library.dart';
 
@@ -12,9 +14,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AppThemeBloc(),
         ),
-        BlocProvider(
-          create: (context) => ChooseBloc(),
-        ),
+        
       ],
       child: BlocListener<AppThemeBloc, AppThemeState>(
         listener: (context, state) {

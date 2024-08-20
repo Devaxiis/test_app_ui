@@ -1,7 +1,6 @@
 export 'package:flutter/material.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:test_app_exam/src/presentation/bloc/app_theme/app_theme_bloc.dart';
-export 'package:test_app_exam/src/presentation/ui/home_screen.dart';
 export 'package:test_app_exam/src/presentation/widgets/alert_dialog0_wg.dart';
 export 'package:test_app_exam/src/presentation/widgets/alert_dialog_wg.dart';
 export 'package:test_app_exam/src/presentation/widgets/custom_app_bar_wg.dart';
@@ -9,5 +8,7 @@ export 'package:test_app_exam/src/presentation/widgets/javob_wg.dart';
 export 'package:test_app_exam/src/presentation/widgets/question_card_wg.dart';
 export 'package:test_app_exam/src/utils/app_colors.dart';
 export 'package:test_app_exam/src/utils/app_images.dart';
-export 'package:test_app_exam/src/presentation/bloc/bloc/choose_bloc.dart';
-export 'package:test_app_exam/src/presentation/ui/chart_screen.dart';
+export 'package:test_app_exam/src/data/fake_data.dart';
+export 'package:test_app_exam/src/domain/models/test_model.dart';
+export 'package:test_app_exam/src/presentation/widgets/card_test_wg.dart';
+export 'package:test_app_exam/src/utils/app_functions.dart';

@@ -1,11 +1,8 @@
+
 import 'dart:developer';
 
 import 'package:test_app_exam/library.dart';
-import 'package:test_app_exam/src/data/fake_data.dart';
-import 'package:test_app_exam/src/domain/models/test_model.dart';
-import 'package:test_app_exam/src/presentation/bloc/bloc/choose_bloc.dart';
-import 'package:test_app_exam/src/presentation/widgets/card_test_wg.dart';
-import 'package:test_app_exam/src/utils/app_functions.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -68,15 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               },
                             );
                           });
-
-                      // AppDialog().succesAlert(
-                      //   context: context,
-                      //   onCancel: () {
-
-                      //   },
-                      //   onConf: () {
-                      //   },
-                      // );
                       setState(() {});
                     },
                   );
@@ -87,23 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.only(left: 12),
                 child: SizedBox(
                   height: 35,
-                  child: BlocBuilder<ChooseBloc, ChooseState>(
-                    builder: (context, state) {
-                      // double? pageID = 1.0;
-                      int a = 0;
-                      // if (controller.page != pageID) {
-                      if (state is ChooseInitial) {
-                        a = 0;
-                      }
-                      if (state is ChooseSuccess) {
-                        a = 1;
-                      }
-                      if (state is ChooseFailure) {
-                        a = 2;
-                      }
-                      // pageID = controller.page;
-                      // }
-                      return ListView.builder(
+                  child: ListView.builder(
+                        itemCount: testData.data.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (_, index) {
                           return GestureDetector(
@@ -120,17 +93,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               margin: const EdgeInsets.only(left: 8),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                  color: AppFunctions.colorer(a),
+                                  color: AppFunctions.colorer(0),
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(8))),
                               child: Text("$index"),
                             ),
                           );
                         },
-                        itemCount: testData.countTest,
-                      );
-                    },
-                  ),
+                      ),
                 ),
               ),
               const SizedBox(

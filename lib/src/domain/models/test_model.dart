@@ -5,7 +5,7 @@ import 'package:test_app_exam/src/domain/models/all_test_model.dart';
 class MainTestModel {
   int id;
   int countTest;
-  List<AllTestModel> data;
+  List<Question> data;
 
   MainTestModel({
     required this.id,
@@ -21,7 +21,7 @@ class MainTestModel {
     return MainTestModel(
       id: json['id'] as int,
       countTest: json['countTest'] as int,
-      data: json['data'] as List<AllTestModel>,
+      data: json['data'] as List<Question>,
     );
   }
 }
