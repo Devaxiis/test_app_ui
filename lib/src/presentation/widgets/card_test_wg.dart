@@ -9,7 +9,7 @@ class CardTestWg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int indexID = -1;
+
     return SizedBox(
       child: Center(
         child: Column(
@@ -28,7 +28,7 @@ class CardTestWg extends StatelessWidget {
               jabovIndex: 1,
               javob: data.options.keys.toList()[0],
               onTab: () {
-                indexID = index;
+               
               },
             ),
             JavobWg(
@@ -36,7 +36,7 @@ class CardTestWg extends StatelessWidget {
               jabovIndex: 2,
               javob: data.options.keys.toList()[1],
               onTab: () {
-                indexID = index;
+                
               },
             ),
             JavobWg(
@@ -44,7 +44,7 @@ class CardTestWg extends StatelessWidget {
               jabovIndex: 3,
               javob: data.options.keys.toList()[2],
               onTab: () {
-                indexID = index;
+                
               },
             ),
             JavobWg(
@@ -52,7 +52,7 @@ class CardTestWg extends StatelessWidget {
               jabovIndex: 4,
               javob: data.options.keys.toList()[3],
               onTab: () {
-                indexID = index;
+                
               },
             )
           ],

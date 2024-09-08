@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                         onPressed: () {
                           if (indexlist > 0) {
-                            int page = --indexlist;
+                            int page = indexlist--;
                             controller.animateToPage(page,
                                 duration: const Duration(milliseconds: 700),
                                 curve: Curves.linear);
@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColors.c8192A5CL,
                         )),
                     Text(
-                      "$indexlist/10",
+                      "$indexlist/${testData.data.length}",
                       style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w400,
@@ -167,15 +167,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     IconButton(
                         onPressed: () {
-                          if (indexlist <= testData.countTest) {
-                            int page = ++indexlist;
+                          if (indexlist < testData.data.length) {
+                            int page = indexlist++;
                             controller.animateToPage(page,
                                 duration: const Duration(milliseconds: 700),
                                 curve: Curves.linear);
                             log("${controller.position}");
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text("Tugadi")));
+                                const SnackBar(content: Text("Test Tugadi")));
                           }
                           setState(() {});
                         },
